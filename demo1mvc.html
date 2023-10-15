@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        // model
+        let points = 0;
+        let pointsPerClick = 1;
+
+        // view
+        updateView();
+        function updateView(){
+            document.getElementById('app').innerHTML = /*HTML*/`
+                Du har ${points} poeng.
+                <button onclick="doClick()">+</button>
+                <button onclick="doUpgrade()">Oppgrader</button>            
+            `;
+        }
+
+        // controller
+        function doClick() {
+            points += pointsPerClick;
+            updateView();
+        }
+
+        function doUpgrade() {
+            pointsPerClick++;
+            points -= 10;
+            updateView();
+        }
+    </script>
+</body>
+
+</html>

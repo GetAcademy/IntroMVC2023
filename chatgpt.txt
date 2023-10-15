@@ -1,0 +1,41 @@
+Jeg programmerer enkle applikasjoner på en nettside ved hjelp av ren JavaScript, HTML og CSS 
+etter design mønsteret model-view-controller. 
+
+Controller-funksjonene ikke skal oppdatere viewet direkte -  bare lese og endre modellen. 
+Så skal funksjonen updateView() tegne opp hele brukergrensesnittet fra scratch kun ut modellen. 
+
+Jeg vil at du skriver om koden nederst til å følge dette mønsteret. Jeg har noen egne regler, 
+samt reglene som følger av MVC:
+ - HTML-dokumentet skal kun inneholde en tom div fra start - med id="app".  
+ - Funksjonen updateView skal sette hele innholdet i denne div-en hver gang den kalles. 
+ - Knappene skal pekes til riktig controllerfunksjon ved hjelp av inline onclick som HTML-attributt. 
+ - Koden skal ikke bruke objekter, lister eller løkker. 
+ - Alle controller-funksjoner avsluttes med en kall på updateView()
+ - Overflødige tagger og id-er tas bort
+ - Controller-funksjonene skal ikke lese eller endret viewet
+
+Her er koden:
+
+    Du har <span id="points">0</span> poeng.
+    <button onclick="doClick()">+</button>
+    <button onclick="doUpgrade()">Oppgrader</button>
+
+    <script>
+        let pointsPerClick = 1;
+
+        function doClick() {
+            const mySpan = document.getElementById('points');
+            let points = parseInt(mySpan.innerText);
+            points += pointsPerClick;
+            mySpan.innerText = points;
+        }
+
+        function doUpgrade() {
+            const mySpan = document.getElementById('points');
+            let points = parseInt(mySpan.innerText);
+            if (points < 10) return;
+            pointsPerClick++;
+            points -= 10;
+            mySpan.innerText = points;
+        }
+    </script>

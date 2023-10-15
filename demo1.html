@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Du har <span id="points">0</span> poeng.
+    <button onclick="doClick()">+</button>
+    <button onclick="doUpgrade()">Oppgrader</button>
+
+    <script>
+        let pointsPerClick = 1;
+
+        function doClick() {
+            const mySpan = document.getElementById('points');
+            let points = parseInt(mySpan.innerText);
+            points += pointsPerClick;
+            mySpan.innerText = points;
+        }
+
+        function doUpgrade() {
+            const mySpan = document.getElementById('points');
+            let points = parseInt(mySpan.innerText);
+            if (points < 10) return;
+            pointsPerClick++;
+            points -= 10;
+            mySpan.innerText = points;
+        }
+    </script>
+</body>
+
+</html>
